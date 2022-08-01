@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -81,7 +81,8 @@ namespace EntityFrameworkDemo
 
         private void SearchProducts(String key)
         {
-            var result = _productDal.GetAll().Where(p => p.Name.Contains(key)).ToList();
+            //var result = _productDal.GetAll().Where(p => p.Name.Contains(key)).ToList();
+            var result = _productDal.GetByName(key);
             dgwProducts.DataSource = result;
         }
     }
