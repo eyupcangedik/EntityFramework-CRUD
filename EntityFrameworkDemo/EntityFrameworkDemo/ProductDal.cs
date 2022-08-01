@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -43,6 +43,15 @@ namespace EntityFrameworkDemo
                 var entity = context.Entry(product);
                 entity.State = EntityState.Deleted;
                 context.SaveChanges();
+            }
+        }
+
+        // Database Search
+        public List<Product> GetByName(String key)
+        {
+            using (ETradeContext context = new ETradeContext())
+            {
+                return context.Products.Where(p => p.Name.Contains(key)).ToList();
             }
         }
     }
